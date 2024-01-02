@@ -1,0 +1,7 @@
+FROM postgres:latest
+
+ENV POSTGRES_DB chatdb
+ENV POSTGRES_USER username
+ENV POSTGRES_PASSWORD password
+
+EXPOSE 5432

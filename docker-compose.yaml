@@ -1,0 +1,30 @@
+version: '3'
+
+services:
+  frontend:
+    build:
+      context: ./frontend
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+    env_file:
+      - ${FRONTEND_ENV_FILE}
+
+  backend:
+    build:
+      context: ./backend
+    ports:
+      - "5000:5000"
+    depends_on:
+      - db
+    env_file:
+      - ${BACKEND_ENV_FILE}
+
+  db:
+    build:
+      context: ./database
+    env_file:
+      - ${DATABASE_ENV_FILE}
+    ports:
+      - "5432:5432"
